@@ -1,48 +1,89 @@
-@use 'variables' as v;
+@use "variables" as v;
 
 /** Media Queries **/
 @mixin telefono {
-    @media (min-width: v.$telefono) {
-        @content;
-    }
+  @media (min-width: v.$telefono) {
+    @content;
+  }
 }
 @mixin tablet {
-    @media (min-width: v.$tablet) {
-        @content;
-    }
+  @media (min-width: v.$tablet) {
+    @content;
+  }
 }
 @mixin desktop {
-    @media (min-width: v.$desktop) {
-        @content;
-    }
+  @media (min-width: v.$desktop) {
+    @content;
+  }
 }
 @mixin xl_desktop {
-    @media (min-width: v.$xl_desktop) {
-        @content;
-    }
+  @media (min-width: v.$xl_desktop) {
+    @content;
+  }
 }
 
 @mixin boton($bgColor, $colorTexto) {
-    background-color: $bgColor;
-    padding: 1.5rem 4rem;
-    color: $colorTexto;
-    font-size: 1.8rem;
-    font-weight: 700;
-    border: none;
-    transition-property: background-color;
-    transition-duration: .3s;
-    text-align: center;
-    width: 100%;
-    display: inline-block;
+  background-color: $bgColor;
+  border-radius: 1rem;
+  padding: 1.5rem 4rem;
+  color: $colorTexto;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
 
-    &:hover {
-        background-color: darken( $bgColor, 10% );
-        cursor: pointer;
-    }
+  &:hover {
+    background-color: darken($bgColor, 10%);
+    cursor: pointer;
+  }
 }
 
-@mixin grid($columnas, $espaciado ) {
-    display: grid;
-    gap: $espaciado;
-    grid-template-columns: repeat($columnas, 1fr);
+@mixin grid($columnas, $espaciado) {
+  display: grid;
+  gap: $espaciado;
+  grid-template-columns: repeat($columnas, 1fr);
+}
+
+@mixin contenedor {
+  width: min(95%, 140rem);
+  margin: 0 auto;
+}
+
+@mixin contenedor-sm {
+  width: min(95%, 60rem);
+  margin: 0 auto;
+}
+
+@mixin headings {
+  font-family: v.$fuente_principal;
+  font-weight: v.$black;
+  margin: 2rem 0;
+}
+
+@mixin nombre-pagina {
+  @include headings;
+  margin: 6rem 0 3rem 0;
+  text-align: center;
+}
+
+@mixin texto-fluido($min, $max) {
+  font-size: clamp($min, -0.8rem + 12vw, $max);
+}
+@mixin texto-degradado($inicio, $final) {
+  background: linear-gradient(to right, $inicio, $final);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@mixin logo {
+  color: v.$blanco;
+  text-align: center;
+  margin-bottom: 2rem;
+  @include desktop {
+    text-align: left;
+    margin: 0;
+  }
 }
