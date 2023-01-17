@@ -13,7 +13,7 @@
     </form>
 
     <div class="acciones">
-        <a href="/login" class="acciones__enlace"> ¿Ya tienes una cuenta?, Inicia Sesión </a>
+        <a href="/" class="acciones__enlace"> ¿Ya tienes una cuenta?, Inicia Sesión </a>
         <a href="/registro" class="acciones__enlace"> ¿Aún no tienes una cuenta?, Obtener una </a>
     </div>
 </main>

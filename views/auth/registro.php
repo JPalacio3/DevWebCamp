@@ -40,7 +40,7 @@
     </form>
 
     <div class="acciones">
-        <a href="/login" class="acciones__enlace"> ¿Ya tienes una cuenta?, Inicia Sesión </a>
+        <a href="/" class="acciones__enlace"> ¿Ya tienes una cuenta?, Inicia Sesión </a>
         <a href="/olvide" class="acciones__enlace"> ¿Olvidaste tu contraseña? </a>
     </div>
 

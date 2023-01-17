@@ -35,8 +35,16 @@ class AuthController
                         $_SESSION['apellido'] = $usuario->apellido;
                         $_SESSION['email'] = $usuario->email;
                         $_SESSION['admin'] = $usuario->admin ?? null;
+
+                        // Redirección al usuario dependiendo de si es Admin o No
+                        if ($usuario->admin) {
+                            header('Location: /admin/dashboard');
+                        }else {
+                            header('Location: /finalizar-registro');
+                        }
+
                     } else {
-                        Usuario::setAlerta('error', 'Password Incorrecto');
+                        Usuario::setAlerta('error', 'Contraseña Incorrecta');
                     }
                 }
             }
@@ -215,7 +223,6 @@ class AuthController
         $router->render('auth/mensaje', [
             'titulo' => 'Cuenta Creada Exitosamente'
         ]);
-
     }
     public static function confirmar(Router $router)
     {
