@@ -151,7 +151,7 @@ class AuthController
 
         // Muestra la vista
         $router->render('auth/olvide', [
-            'titulo' => 'Olvide mi Password',
+            'titulo' => 'Olvidé mi Contraseña',
             'alertas' => $alertas
         ]);
     }
@@ -194,7 +194,7 @@ class AuthController
 
                 // Redireccionar
                 if ($resultado) {
-                    header('Location: /');
+                    header('Location: /login');
                 }
             }
         }
@@ -215,8 +215,8 @@ class AuthController
         $router->render('auth/mensaje', [
             'titulo' => 'Cuenta Creada Exitosamente'
         ]);
-    }
 
+    }
     public static function confirmar(Router $router)
     {
 
@@ -229,7 +229,7 @@ class AuthController
 
         if (empty($usuario)) {
             // No se encontró un usuario con ese token
-            Usuario::setAlerta('error', 'Token No Válido');
+            Usuario::setAlerta('error', 'Token No Válido, la cuenta NO se confirmó');
         } else {
             // Confirmar la cuenta
             $usuario->confirmado = 1;
@@ -239,10 +239,8 @@ class AuthController
             // Guardar en la BD
             $usuario->guardar();
 
-            Usuario::setAlerta('exito', 'Cuenta Comprobada Correctamente');
+            Usuario::setAlerta('exito', 'Cuenta Comprobada Exitosamente');
         }
-
-
 
         $router->render('auth/confirmar', [
             'titulo' => 'Confirma tu cuenta DevWebcamp',
