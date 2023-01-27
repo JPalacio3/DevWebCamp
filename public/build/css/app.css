@@ -305,9 +305,12 @@ template {
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+  height: 100%;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -517,6 +520,7 @@ h3 {
   }
 }
 .header__enlace {
+  all: unset;
   color: #FFFFFF;
   font-size: 1.4rem;
   text-transform: uppercase;
@@ -524,6 +528,7 @@ h3 {
 }
 .header__enlace:hover {
   color: #007df4;
+  cursor: pointer;
 }
 .header__contenido {
   padding-top: 10rem;
@@ -669,5 +674,104 @@ h3 {
   background-color: #13fd13;
   border-left: 0.5rem solid #017601;
   color: #017601;
+}
+
+.dashboard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #F8FAFC;
+}
+.dashboard__header {
+  background-color: #1E293B;
+  padding: 2rem;
+}
+.dashboard__header-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .dashboard__header-grid {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.dashboard__logo {
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: clamp(2rem, -0.8rem + 12vw, 3rem);
+}
+@media (min-width: 1024px) {
+  .dashboard__logo {
+    text-align: left;
+    margin: 0;
+  }
+}
+.dashboard__form {
+  display: flex;
+  justify-content: center;
+}
+.dashboard__submit--logout {
+  all: unset;
+  color: #FFFFFF;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.dashboard__submit--logout:hover {
+  color: #007df4;
+  cursor: pointer;
+}
+.dashboard__grid {
+  display: flex;
+  flex: 1;
+}
+.dashboard__sidebar {
+  background-color: #2f405d;
+  width: 12rem;
+}
+.dashboard__menu {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.dashboard__icono {
+  font-size: 2rem;
+}
+.dashboard__menu-texto {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+.dashboard__enlace {
+  color: #6f8ab6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  transition: 200ms background-color ease-in-out 200ms border-radius ease;
+}
+.dashboard__enlace--actual {
+  color: #FFFFFF;
+  border-radius: 5rem;
+  background-color: #526fa0;
+}
+.dashboard__enlace:hover {
+  background-color: #6f8ab6;
+  border-radius: 5rem;
+  color: #f6f8fb;
+}
+.dashboard__contenido {
+  width: 100%;
+  padding: 1rem 1rem 3rem 1rem;
+}
+@media (min-width: 768px) {
+  .dashboard__contenido {
+    padding: 1rem 5rem 3rem 5rem;
+  }
 }
 /*# sourceMappingURL=app.css.map */
