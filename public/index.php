@@ -4,14 +4,13 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AuthController;
-use Controllers\DashboardController;
-use Controllers\PonentesController;
 use Controllers\EventosController;
+use Controllers\PonentesController;
+use Controllers\DashboardController;
 use Controllers\RegistradosController;
 use Controllers\RegalosController;
 
 $router = new Router();
-
 
 // Login
 $router->get('/', [AuthController::class, 'login']);
@@ -37,9 +36,9 @@ $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 // Área e administración
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 $router->get('/admin/ponentes', [PonentesController::class, 'index']);
+$router->get('/admin/ponentes/crear', [PonentesController::class, 'crear']);
 $router->get('/admin/eventos', [EventosController::class, 'index']);
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
-
 
 $router->comprobarRutas();
