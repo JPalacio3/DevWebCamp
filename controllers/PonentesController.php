@@ -13,10 +13,6 @@ class PonentesController
     {
         $ponente = Ponente::all();
 
-
-
-
-
         $router->render('admin/ponentes/index', [
             'titulo' => 'Ponentes / Conferencistas',
             'ponentes' => $ponente,
@@ -29,6 +25,7 @@ class PonentesController
     {
         $alertas = [];
         $ponente = new Ponente;
+        $redes = json_decode($ponente->redes);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -77,6 +74,103 @@ class PonentesController
             'titulo' => 'Registrar Ponente',
             'alertas' => $alertas,
             'ponente' => $ponente,
+            'redes' => $redes,
+
         ]);
+    }
+
+    public static function editar(Router $router)
+    {
+        $alertas = [];
+
+        // Validar el ID
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            header('Location: /admin/ponentes');
+        }
+
+        // Obteber el ponente a editar
+        $ponente = Ponente::find($id);
+
+        if (!$ponente) {
+            header('Location: /admin/ponentes');
+        }
+
+        // Cargar la imagen del ponente
+        $ponente->imagen_actual = $ponente->imagen;
+
+        // Actualizar la imagen
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!empty($_FILES['imagen']['tmp_name'])) {
+
+                // Generamos una nueva carpeta para almacenar las imágenes de los ponentes
+                $carpeta_imagenes = '../public/img/speakers';
+
+                // Crear la carpeta si no existe
+                if (!is_dir($carpeta_imagenes)) {
+                    mkdir($carpeta_imagenes, 0777, true);
+                }
+                $imagen_png = Image::make($_FILES['imagen']['tmp_name'])->fit(800, 800)->encode('png', 90);
+                $imagen_webp = Image::make($_FILES['imagen']['tmp_name'])->fit(800, 800)->encode('webp', 90);
+
+                // Generar el nombre para cada imagen?
+                $nombre_imagen = md5(uniqid(rand(), true));
+                $_POST['imagen'] = $nombre_imagen;
+            } else {
+                $_POST['imagen'] = $ponente->imagen_actual;
+            }
+
+
+            // Convertir el arreglo de redes sociales a String para que la función sanitizar pueda ejecutarse y se pueda mandar el archivo sanitizado a la base de datos
+            $_POST['redes'] = json_encode($_POST['redes'], JSON_UNESCAPED_SLASHES);
+
+            $ponente->sincronizar($_POST);
+
+            $alertas = $ponente->validar();
+
+            if (empty($alertas)) {
+                if (isset($nombre_imagen)) {
+                    // Guardar las imágenes
+                    $imagen_png->save($carpeta_imagenes . '/' . $nombre_imagen . '.png');
+                    $imagen_webp->save($carpeta_imagenes . '/' . $nombre_imagen . '.webp');
+                }
+
+                $resultado = $ponente->guardar();
+
+                if ($resultado) {
+                    header('Location: /admin/ponentes');
+                }
+            }
+        }
+
+        // Traer las redes de la base de datos
+        $redes = json_decode($ponente->redes);
+
+        $router->render('admin/ponentes/editar', [
+            'titulo' => 'Actualizar Ponente',
+            'alertas' => $alertas,
+            'ponente' => $ponente,
+            'redes' => $redes,
+        ]);
+    }
+
+    public static function eliminar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $ponente = Ponente::find($id);
+
+            if (!isset($ponente)) {
+                header('Location: /admin/ponentes');
+            }
+
+            $resultado = $ponente->eliminar();
+
+            if ($resultado) {
+                header('Location: /admin/ponentes');
+            }
+        }
     }
 }

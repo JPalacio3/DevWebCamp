@@ -509,6 +509,12 @@ h3 {
 .formulario__submit--registrar {
   width: 100%;
 }
+.formulario__texto {
+  margin-top: 3rem;
+}
+.formulario__imagen {
+  max-width: 20rem;
+}
 
 .acciones, .acciones--centrar {
   margin-top: 3rem;

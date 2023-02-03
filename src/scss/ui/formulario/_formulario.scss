@@ -67,10 +67,10 @@
     }
   }
 
-&__listado {
-@include m.tags;
+  &__listado {
+    @include m.tags;
 
-}
+  }
 
   &__submit {
     @include m.boton(v.$azul, v.$blanco);
@@ -81,5 +81,14 @@
     &--registrar {
       width: 100%;
     }
+  }
+
+  &__texto {
+    margin-top: 3rem;
+  }
+
+  &__imagen {
+    max-width: 20rem;
+
   }
 }

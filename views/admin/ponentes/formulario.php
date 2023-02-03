@@ -25,6 +25,19 @@
         <label for="imagen" class="formulario__label">Imágen: </label>
         <input type="file" class="formulario__input formulario__input--file " id="imagen" name="imagen">
     </div>
+
+    <?php if (isset($ponente->imagen_actual)) { ?>
+        <p class="formulario__texto">Imagen actual: </p>
+
+        <div class="formulario__imagen">
+            <picture class="formulario_imagen--picture">
+                <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $ponente->imagen; ?>.webp" type="image/webp">
+                <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $ponente->imagen; ?>.png" type="image/png">
+                <img src="<?php echo $_ENV['HOST'] . '/img/speakers/' . $ponente->imagen; ?>.png" alt="imagen ponente">
+            </picture>
+        </div>
+
+    <?php } ?>
 </fieldset>
 
 
@@ -48,7 +61,7 @@
             <div class="formulario__icono">
                 <i class="fa-brands fa-facebook"></i>
             </div>
-            <input type="text" class="formulario__input--sociales" name="redes[facebook]" value="<?php echo $ponente->facebook ?? ''; ?>" placeholder="facebook">
+            <input type="text" class="formulario__input--sociales" name="redes[facebook]" value="<?php echo $redes->facebook ?? ''; ?>" placeholder="facebook">
         </div>
     </div>
 
@@ -58,7 +71,7 @@
             <div class="formulario__icono">
                 <i class="fa-brands fa-twitter"></i>
             </div>
-            <input type="text" class="formulario__input--sociales" name="redes[twitter]" value="<?php echo $ponente->twitter ?? ''; ?>" placeholder="Twitter">
+            <input type="text" class="formulario__input--sociales" name="redes[twitter]" value="<?php echo $redes->twitter ?? ''; ?>" placeholder="Twitter">
         </div>
     </div>
 
@@ -68,7 +81,7 @@
             <div class="formulario__icono">
                 <i class="fa-brands fa-youtube"></i>
             </div>
-            <input type="text" class="formulario__input--sociales" name="redes[youtube]" value="<?php echo $ponente->youtube ?? ''; ?>" placeholder="Youtube">
+            <input type="text" class="formulario__input--sociales" name="redes[youtube]" value="<?php echo $redes->youtube ?? ''; ?>" placeholder="Youtube">
         </div>
     </div>
 
@@ -78,7 +91,7 @@
             <div class="formulario__icono">
                 <i class="fa-brands fa-instagram"></i>
             </div>
-            <input type="text" class="formulario__input--sociales" name="redes[instagram]" value="<?php echo $ponente->instagram ?? ''; ?>" placeholder="Instagram">
+            <input type="text" class="formulario__input--sociales" name="redes[instagram]" value="<?php echo $redes->instagram ?? ''; ?>" placeholder="Instagram">
         </div>
     </div>
 
@@ -88,7 +101,7 @@
             <div class="formulario__icono">
                 <i class="fa-brands fa-tiktok"></i>
             </div>
-            <input type="text" class="formulario__input--sociales" name="redes[tiktok]" value="<?php echo $ponente->tiktok ?? ''; ?>" placeholder="TikTok">
+            <input type="text" class="formulario__input--sociales" name="redes[tiktok]" value="<?php echo $redes->tiktok ?? ''; ?>" placeholder="TikTok">
         </div>
     </div>
 
@@ -98,7 +111,7 @@
             <div class="formulario__icono">
                 <i class="fa-brands fa-github"></i>
             </div>
-            <input type="text" class="formulario__input--sociales" name="redes[github]" value="<?php echo $ponente->github ?? ''; ?>" placeholder="GitHub">
+            <input type="text" class="formulario__input--sociales" name="redes[github]" value="<?php echo $redes->github ?? ''; ?>" placeholder="GitHub">
         </div>
     </div>
 </fieldset>
