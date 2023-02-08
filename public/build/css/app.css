@@ -921,4 +921,60 @@ h3 {
 .table__accion--eliminar {
   color: rgb(169, 0, 0);
 }
+
+.paginacion {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .paginacion {
+    justify-content: flex-end;
+  }
+}
+.paginacion__enlace {
+  color: #007df4;
+  font-size: 1.6rem;
+}
+.paginacion__enlace--texto {
+  padding: 1rem;
+  border: 1px solid #007df4;
+}
+.paginacion__enlace--texto:hover {
+  background-color: #007df4;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+.paginacion__enlace--numero {
+  color: #007df4;
+  font-weight: 700;
+  display: none;
+}
+@media (min-width: 768px) {
+  .paginacion__enlace--numero {
+    display: inline;
+  }
+}
+.paginacion__enlace--numero:hover {
+  border-top: 2.5px solid #007df4;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+.paginacion__enlace--actual {
+  color: #1E293B;
+  font-weight: 700;
+  display: none;
+}
+.paginacion__enlace--actual:hover {
+  cursor: default;
+}
+@media (min-width: 768px) {
+  .paginacion__enlace--actual {
+    display: inline;
+  }
+}
 /*# sourceMappingURL=app.css.map */
