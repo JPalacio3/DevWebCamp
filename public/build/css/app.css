@@ -452,15 +452,16 @@ h3 {
   font-size: 1.8rem;
   color: rgba(26, 27, 21, 0.8);
 }
-.formulario__input, .formulario__input--sociales {
+.formulario__input, .formulario__input--sociales, .formulario__select--sociales, .formulario__select {
   padding: 1rem;
   border: 1px solid #b1c7dd;
   border-radius: 0.5rem;
+  resize: none;
 }
-.formulario__input--file {
+.formulario__input--file, .formulario__select--file {
   border: none;
 }
-.formulario__input--sociales {
+.formulario__input--sociales, .formulario__select--sociales {
   flex: 1;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -515,6 +516,12 @@ h3 {
 .formulario__imagen {
   max-width: 20rem;
 }
+.formulario__radio {
+  display: flex;
+  gap: 2rem;
+  color: #007df4;
+  font-weight: 700;
+}
 
 .acciones, .acciones--centrar {
   margin-top: 3rem;
@@ -528,6 +535,34 @@ h3 {
   color: #1a1b15;
   font-size: 1.5rem;
   font-weight: 300;
+}
+
+.horas {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 768px) {
+  .horas {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.horas__hora {
+  color: #007df4;
+  border: 0.3px solid #007df4;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 1rem;
+  font-weight: 700;
+}
+.horas__hora:hover {
+  cursor: pointer;
+  background-color: #eff7ff;
 }
 
 .barra {
@@ -943,6 +978,7 @@ h3 {
 .paginacion__enlace--texto {
   padding: 1rem;
   border: 1px solid #007df4;
+  border-radius: 0.5rem;
 }
 .paginacion__enlace--texto:hover {
   background-color: #007df4;
@@ -961,7 +997,6 @@ h3 {
 }
 .paginacion__enlace--numero:hover {
   border-top: 2.5px solid #007df4;
-  border-radius: 0.5rem;
   padding: 0.5rem;
 }
 .paginacion__enlace--actual {

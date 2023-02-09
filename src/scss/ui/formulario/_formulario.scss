@@ -50,10 +50,13 @@
     color: rgba(v.$negro, 0.8);
   }
 
-  &__input {
+  &__input,
+  &__select {
     padding: 1rem;
     border: 1px solid darken(v.$gris-claro, 20);
     border-radius: 0.5rem;
+    resize: none;
+
 
     &--file {
       border: none;
@@ -69,7 +72,6 @@
 
   &__listado {
     @include m.tags;
-
   }
 
   &__submit {
@@ -89,6 +91,14 @@
 
   &__imagen {
     max-width: 20rem;
+
+  }
+
+  &__radio {
+    display: flex;
+    gap: 2rem;
+    color: v.$azul;
+    font-weight: v.$bold;
 
   }
 }

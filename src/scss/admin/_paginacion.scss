@@ -21,6 +21,7 @@
         &--texto {
             padding: 1rem;
             border: 1px solid v.$azul;
+            border-radius: .5rem;
 
             &:hover {
                 background-color: v.$azul;
@@ -40,7 +41,7 @@
 
             &:hover {
                 border-top: 2.5px solid v.$azul;
-                border-radius: .5rem;
+                // border-radius: .5rem;
                 padding: .5rem;
             }
         }
