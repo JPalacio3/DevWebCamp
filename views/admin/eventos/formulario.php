@@ -34,16 +34,23 @@
 
             <?php } ?>
         </div>
+
+        <!-- Campo vacío para almacenar la selección -->
+        <input type="hidden" name="dia_id" value="">
     </div>
 
     <div class="formulario__campo" id="horas">
         <label for="" class="formulario__label">Seleccione la hora: </label>
 
-        <ul class="horas">
+        <ul class="horas" id="horas">
             <?php foreach ($horas as $hora) { ?>
-                <li class="horas__hora"><?php echo $hora->hora; ?></li>
+                <li data-hora-id="<?php echo $hora->id;  ?>" class="horas__hora horas__hora--deshabilitada"><?php echo $hora->hora; ?></li>
             <?php } ?>
         </ul>
+
+        <!-- Campo vacío para almacenar la selección -->
+        <input type="hidden" name="hora_id" value="">
+
     </div>
 </fieldset>
 

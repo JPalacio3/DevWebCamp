@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Horas extends ActiveRecord
+class Hora extends ActiveRecord
 {
     protected static $tabla = 'horas';
     protected static $columnasDB = ['id', 'hora'];

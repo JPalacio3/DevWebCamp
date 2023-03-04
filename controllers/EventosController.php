@@ -5,7 +5,7 @@ namespace Controllers;
 use Model\Categoria;
 use Model\Dia;
 use Model\Evento;
-use Model\Horas;
+use Model\Hora;
 use MVC\Router;
 
 class EventosController
@@ -13,6 +13,9 @@ class EventosController
 
     public static function index(Router $router)
     {
+        if (!is_admin()) {
+            header('Location: /login');
+        }
 
 
 
@@ -23,12 +26,16 @@ class EventosController
 
     public static function crear(Router $router)
     {
+        if (!is_admin()) {
+            header('Location: /login');
+            return;
+        }
 
         $alertas = [];
 
         $categorias = Categoria::all('ASC');
         $dias = Dia::all('ASC');
-        $horas = Horas::all('ASC');
+        $horas = Hora::all('ASC');
         $evento = new Evento;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

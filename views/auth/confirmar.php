@@ -6,10 +6,10 @@
     <?php require_once __DIR__ . '/../templates/alertas.php'; ?>
 
     <?php
-if(isset($alertas['exito'])) {?>
-    <div class="acciones--centrar">
-        <a href="/login" class="acciones__enlace"> Inicia Sesión </a>
-    </div>
+    if (isset($alertas['exito'])) { ?>
+        <div class="acciones--centrar">
+            <a href="/login" class="acciones__enlace"> Inicia Sesión </a>
+        </div>
     <?php } ?>
 
 </main>

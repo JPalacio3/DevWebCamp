@@ -21,5 +21,23 @@
             cursor: pointer;
             background-color: lighten(v.$azul, 49);
         }
+
+        &--seleccionada {
+            @extend .horas__hora;
+            background-color: v.$azul;
+            color: v.$blanco;
+        }
+
+        &--deshabilitada {
+            @extend .horas__hora;
+            border: 1px solid v.$gris;
+            color: v.$gris;
+            opacity: .5;
+
+            &:hover {
+                background-color: transparent;
+                cursor: not-allowed;
+            }
+        }
     }
 }

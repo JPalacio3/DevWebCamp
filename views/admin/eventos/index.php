@@ -63,5 +63,5 @@
 </div>
 
 <?php
-echo $paginacion;
+// echo $paginacion;
 ?>

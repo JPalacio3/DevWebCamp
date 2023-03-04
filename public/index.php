@@ -9,6 +9,7 @@ use Controllers\PonentesController;
 use Controllers\DashboardController;
 use Controllers\RegistradosController;
 use Controllers\RegalosController;
+use Controllers\APIEventos;
 
 $router = new Router();
 
@@ -33,7 +34,7 @@ $router->post('/reestablecer', [AuthController::class, 'reestablecer']);
 $router->get('/mensaje', [AuthController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 
-// Área e administración
+// Área de administración
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 $router->get('/admin/ponentes', [PonentesController::class, 'index']);
 
@@ -47,6 +48,8 @@ $router->post('/admin/ponentes/eliminar', [PonentesController::class, 'eliminar'
 $router->get('/admin/eventos', [EventosController::class, 'index']);
 $router->get('/admin/eventos/crear', [EventosController::class, 'crear']);
 $router->post('/admin/eventos/crear', [EventosController::class, 'crear']);
+
+$router->get('/api/eventos-horario', [APIEventos::class, 'index']);
 
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
