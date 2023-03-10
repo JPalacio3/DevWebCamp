@@ -13,6 +13,21 @@
         // Escuchar por el evento de escritura en el input
         ponentesInput.addEventListener('input',buscarPonentes);
 
+        // Comprobar que el input hidden de ponente tenga un valor asignado
+        if (ponenteHidden.value) {
+            (async () => {
+                const ponente = await obtenerPonente(ponenteHidden.value);
+                const { nombre,apellido } = ponente;
+
+                // Insertar en el HTML
+                const ponenteDOM = document.createElement('LI');
+                ponenteDOM.classList.add('listado-ponentes__ponente','listado-ponentes__ponente--seleccionado');
+                ponenteDOM.textContent = `${nombre} ${apellido}`;
+
+                listadoPonentes.appendChild(ponenteDOM);
+            })()
+        }
+
         async function obtenerPonentes() {
             // Asignamos una URL para hacer el llamado de la API
             const url = `/api/ponentes`;
@@ -21,6 +36,17 @@
             const resultado = await respuesta.json();
 
             formatearPonentes(resultado);
+        }
+
+        //obtener un único ponente por su id
+        async function obtenerPonente(id) {
+            // Asignamos una URL para hacer el llamado de la API
+            const url = `/api/ponente?id=${id}`;
+
+            const respuesta = await fetch(url);
+            const resultado = await respuesta.json();
+
+            return resultado;
         }
 
         function formatearPonentes(arrayPonentes = []) {
@@ -50,7 +76,6 @@
         }
 
         function mostrarPonentes() {
-
 
             // limpiar el renderizado de la búsqueda para evitar que se repitan las búsquedas
             // listadoPonentes.innerHTML = '';
