@@ -14,7 +14,4 @@
         <?php include_once __DIR__ . '/formulario.php' ?>
         <input type="submit" value="Registrar Evento" class="formulario__submit formulario__submit--registrar">
     </form>
-
-
-
 </div>

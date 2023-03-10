@@ -4,11 +4,6 @@
 
     if (horas) {
 
-        let busqueda = {
-            categoria_id: '',
-            dia: '',
-        }
-
         const categoria = document.querySelector('[name = "categoria_id"]');
         const dias = document.querySelectorAll('[name = "dia"]');
         const inputHiddenDia = document.querySelector('[name = "dia_id"]');
@@ -16,6 +11,11 @@
 
         categoria.addEventListener('change',terminoBusqueda);
         dias.forEach(dia => dia.addEventListener('change',terminoBusqueda));
+
+        let busqueda = {
+            categoria_id: '',
+            dia: '',
+        }
 
         function terminoBusqueda(e) {
             busqueda[ e.target.name ] = e.target.value;
@@ -29,9 +29,6 @@
             if (horaPrevia) {
                 horaPrevia.classList.remove('horas__hora--seleccionada')
             }
-
-
-
 
             // Verificar que el objeto esté completo para poder consultar la API
             if (Object.values(busqueda).includes('')) { return; } else { buscarEventos(); }
@@ -58,7 +55,7 @@
             // Comprobar eventos ya tomados, y quitar la variable de deshabilitados
             horasTomadas = eventos.map(evento => evento.hora_id);
 
-            const listadoHorasArray = Array.from(listadoHoras); // Listado horas es un NodeList, para poder usar la función filter debemos convertirlo en un arreglo ya esta función solo está diseñada para arreglos y no para NodeList
+            const listadoHorasArray = Array.from(listadoHoras); // Listadohoras es un NodeList, para poder usar la función filter debemos convertirlo en un arreglo ya esta función solo está diseñada para arreglos y no para NodeList
 
             const resultado = listadoHorasArray.filter(li => !horasTomadas.includes(li.dataset.horaId));
             resultado.forEach(li => li.classList.remove('horas__hora--deshabilitada'));

@@ -26,10 +26,9 @@
         <label for="categoria" class="formulario__label">Seleccione el día en que desea asistir: </label>
         <div class="formulario__radio">
             <?php foreach ($dias as $dia) { ?>
-                <div class="">
-                    <label for="<?php echo strtolower($dia->nombre); ?>"> <?php echo $dia->nombre; ?> </label>
-
-                    <input type="radio" id="<?php echo strtolower($dia->nombre);   ?>" name="dia" value="<?php echo $dia->id; ?>">
+                <div>
+                    <label for="<?php echo strtolower($dia->nombre); ?>"><?php echo $dia->nombre; ?></label>
+                    <input type="radio" id="<?php echo strtolower($dia->nombre); ?>" name="dia" value="<?php echo $dia->id; ?>" <?php echo ($evento->dia_id === $dia->id) ? 'checked' : ''; ?> />
                 </div>
 
             <?php } ?>
@@ -49,7 +48,7 @@
         </ul>
 
         <!-- Campo vacío para almacenar la selección -->
-        <input type="hidden" name="hora_id" value="">
+        <input type="hidden" name="hora_id" value="<?php echo $evento->dia_id; ?>">
 
     </div>
 </fieldset>
@@ -58,8 +57,13 @@
     <legend class="formulario__legend">Información Extra: </legend>
 
     <div class="formulario__campo">
-        <label for="ponentes" class="formulario__label">Ponente: </label>
+        <label for="ponentes" class="formulario__label">Buscar Ponente: </label>
         <input type="text" id="ponentes" placeholder="Buscar Ponente" class="formulario__input">
+        <ul id="listado-ponentes" class="listado-ponentes"></ul>
+
+        <!-- input de tipo oculto para guardar el valor y enviar a la BD -->
+        <input type="hidden" name="ponente_id" value="">
+
     </div>
 
     <div class="formulario__campo">

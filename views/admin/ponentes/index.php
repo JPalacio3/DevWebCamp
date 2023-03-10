@@ -43,18 +43,10 @@
                                     Eliminar
                                 </button>
                             </form>
-
                         </td>
-
                     </tr>
                 <?php } ?>
-
-
-
-
-
             </tbody>
-
         </table>
 
     <?php } else { ?>
