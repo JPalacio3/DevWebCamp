@@ -11,6 +11,7 @@ use Controllers\RegistradosController;
 use Controllers\RegalosController;
 use Controllers\APIEventos;
 use Controllers\APIPonentes;
+use Controllers\PaginasController;
 
 $router = new Router();
 
@@ -51,6 +52,7 @@ $router->get('/admin/eventos/crear', [EventosController::class, 'crear']);
 $router->post('/admin/eventos/crear', [EventosController::class, 'crear']);
 $router->get('/admin/eventos/editar', [EventosController::class, 'editar']);
 $router->post('/admin/eventos/editar', [EventosController::class, 'editar']);
+$router->post('/admin/eventos/eliminar', [EventosController::class, 'editar']);
 
 $router->get('/api/eventos-horario', [APIEventos::class, 'index']);
 $router->get('/api/ponentes', [APIPonentes::class, 'index']);
@@ -58,5 +60,12 @@ $router->get('/api/ponente', [APIPonentes::class, 'ponente']);
 
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
+
+// Área Pública
+$router->get('/', [PaginasController::class, 'index']);
+$router->get('/sobredevwebcamp', [PaginasController::class, 'evento']);
+$router->get('/paquetes', [PaginasController::class, 'paquetes']);
+$router->get('/workshops-conferencias', [PaginasController::class, 'conferencias']);
+
 
 $router->comprobarRutas();

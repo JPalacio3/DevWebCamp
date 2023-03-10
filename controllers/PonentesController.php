@@ -12,6 +12,11 @@ class PonentesController
 
     public static function index(Router $router)
     {
+
+        if (!is_admin()) {
+            header('Location: /login');
+        }
+
         // Siempre hay que validar que en la URL haya una página válida para mostrar
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -26,7 +31,6 @@ class PonentesController
         if ($paginacion->total_paginas() < $pagina_actual) {
             header('Location: /admin/ponentes?page=1');
         }
-
 
         $ponentes = Ponente::paginar($registros_por_pagina, $paginacion->offset());
 
@@ -193,11 +197,12 @@ class PonentesController
 
     public static function eliminar()
     {
-        if (!is_admin()) {
-            header('Location: /login');
-        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            if (!is_admin()) {
+                header('Location: /login');
+            }
 
             if (!is_admin()) {
                 header('Location: /login');
