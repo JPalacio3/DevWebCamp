@@ -268,4 +268,12 @@ class ActiveRecord
         $resultado = self::$db->query($query);
         return $resultado;
     }
+
+    // Retornar los registros por un orden
+    public static function ordenarLista($columna, $orden)
+    {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY ${columna} ${orden} ";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
 }

@@ -39,10 +39,9 @@ class AuthController
                         // Redirección al usuario dependiendo de si es Admin o No
                         if ($usuario->admin) {
                             header('Location: /admin/dashboard');
-                        }else {
+                        } else {
                             header('Location: /finalizar-registro');
                         }
-
                     } else {
                         Usuario::setAlerta('error', 'Contraseña Incorrecta');
                     }
