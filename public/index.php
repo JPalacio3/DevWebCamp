@@ -16,8 +16,8 @@ use Controllers\PaginasController;
 $router = new Router();
 
 // Login
-$router->get('/', [AuthController::class, 'login']);
-$router->post('/', [AuthController::class, 'login']);
+$router->get('/login', [AuthController::class, 'login']);
+$router->post('/login', [AuthController::class, 'login']);
 $router->post('/logout', [AuthController::class, 'logout']);
 
 // Crear Cuenta
@@ -62,7 +62,7 @@ $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
 
 // Área Pública
-$router->get('/index', [PaginasController::class, 'index']);
+$router->get('/', [PaginasController::class, 'index']);
 $router->get('/sobredevwebcamp', [PaginasController::class, 'evento']);
 $router->get('/paquetes', [PaginasController::class, 'paquetes']);
 $router->get('/workshops-conferencias', [PaginasController::class, 'conferencias']);

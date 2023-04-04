@@ -5,13 +5,13 @@
             <!-- verificar si el usuario está auténticado -->
             <?php
             if (is_auth()) { ?>
-                <a href="/registro" class="header__enlace">Administrar</a>
+                <a href="<?php echo is_admin() ? '/admin/dashboard' : '/finalizar-registro';  ?>" class="header__enlace">Administrar</a>
                 <form method="POST" action="/logout" class="header__form">
                     <input type="submit" value="Cerrar Sesión" class="header__submit">
                 </form>
             <?php } else { ?>
                 <a href="/registro" class="header__enlace">Registro</a>
-                <a href="/" class="header__enlace">Iniciar Sesión</a>
+                <a href="/login" class="header__enlace">Iniciar Sesión</a>
             <?php } ?>
         </nav>
 
