@@ -32,7 +32,7 @@
             <h2 class="barra__logo">&#60;DevWebCamp /></h2>
         </a>
         <nav class="navegacion">
-            <a href="/sobredevwebcamp" class="navegacion__enlace <?php echo pagina_actual('/sobredevwebcamp') ? 'navegacion__enlace--actual' : ''; ?> ">Eventos</a>
+            <a href="/sobredevwebcamp" class="navegacion__enlace <?php echo pagina_actual('/sobredevwebcamp') ? 'navegacion__enlace--actual' : ''; ?> ">Evento</a>
             <a href="/paquetes" class="navegacion__enlace <?php echo pagina_actual('/paquetes') ? 'navegacion__enlace--actual' : ''; ?> ">Paquetes</a>
             <a href="/workshops-conferencias" class="navegacion__enlace <?php echo pagina_actual('/workshops-conferencias') ? 'navegacion__enlace--actual' : ''; ?> ">Workshops / Conferencias</a>
             <a href="registro" class="navegacion__enlace <?php echo pagina_actual('/registro') ? 'navegacion__enlace--actual' : ''; ?> ">Comprar pase</a>

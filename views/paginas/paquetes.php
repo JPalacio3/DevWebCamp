@@ -4,7 +4,7 @@
 
     <!-- // Paquetes -->
     <div class="paquetes__grid">
-        <div class="paquete">
+        <div <?php aos_animation(); ?> class="paquete">
             <h3 class="paquete__nombre">Pase Gratis</h3>
             <ul class="paquete__lista">
                 <li class="paquete__elemento">Acceso Virtual a DevWebCamp</li>
@@ -13,7 +13,7 @@
             <p class="paquete__precio">$ 0</p>
         </div>
 
-        <div class="paquete">
+        <div <?php aos_animation(); ?> class="paquete">
             <h3 class="paquete__nombre">Pase Presencial</h3>
             <ul class="paquete__lista">
                 <li class="paquete__elemento">Acceso Presencial a DevWebCamp</li>
@@ -27,7 +27,7 @@
             <p class="paquete__precio">$ 199</p>
         </div>
 
-        <div class="paquete">
+        <div <?php aos_animation(); ?> class="paquete">
             <h3 class="paquete__nombre">Pase Virtual</h3>
             <ul class="paquete__lista">
                 <li class="paquete__elemento">Acceso Virtual de DevWebCamp</li>

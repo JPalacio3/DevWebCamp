@@ -5,21 +5,21 @@
     <?php require_once __DIR__ . '/../templates/alertas.php'; ?>
 
     <form class="formulario" action="/login" method="POST">
-        <div class="formulario__campo">
+        <div <?php aos_animation(); ?> class="formulario__campo">
             <label for="email" class="formulario__label">Email: </label>
             <input type="email" class="formulario__input" placeholder="Tu email" id="email" name="email" />
         </div>
 
-        <div class="formulario__campo">
+        <div <?php aos_animation(); ?> class="formulario__campo">
             <label for="password" class="formulario__label">Password: </label>
             <input type="password" class="formulario__input" placeholder="Tu password" id="password" name="password" />
         </div>
-        <input type="submit" class="formulario__submit" value="Iniciar Sesión">
+        <input <?php aos_animation(); ?> type="submit" class="formulario__submit" value="Iniciar Sesión">
     </form>
 
     <div class="acciones">
-        <a href="/registro" class="acciones__enlace"> ¿Aún no tienes una cuenta?, Obtener una </a>
-        <a href="/olvide" class="acciones__enlace"> ¿Olvidaste tu contraseña? </a>
+        <a <?php aos_animation(); ?> href="/registro" class="acciones__enlace"> ¿Aún no tienes una cuenta?, Obtener una </a>
+        <a <?php aos_animation(); ?> href="/olvide" class="acciones__enlace"> ¿Olvidaste tu contraseña? </a>
     </div>
 
 
