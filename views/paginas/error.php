@@ -1,4 +1,4 @@
-<main class="pagina_404">
+<main <?php aos_animation(); ?> class="pagina_404">
 
     <h2 class="pagina_404__heading"><?php echo $titulo; ?></h2>
 
