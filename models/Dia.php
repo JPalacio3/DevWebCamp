@@ -2,6 +2,8 @@
 
 namespace Model;
 
+require_once 'ActiveRecord.php';
+
 class Dia extends ActiveRecord
 {
     protected static $tabla = 'dias';

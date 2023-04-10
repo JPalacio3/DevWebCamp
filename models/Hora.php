@@ -2,6 +2,8 @@
 
 namespace Model;
 
+require_once 'ActiveRecord.php';
+
 class Hora extends ActiveRecord
 {
     protected static $tabla = 'horas';

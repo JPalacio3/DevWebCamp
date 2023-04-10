@@ -2,6 +2,8 @@
 
 namespace Model;
 
+require_once 'ActiveRecord.php';
+
 class Categoria extends ActiveRecord
 {
     protected static $tabla = 'categorias';

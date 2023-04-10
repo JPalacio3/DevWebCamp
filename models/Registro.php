@@ -2,6 +2,8 @@
 
 namespace Model;
 
+require_once 'ActiveRecord.php';
+
 class Registro extends ActiveRecord
 {
     protected static $tabla = 'registros';

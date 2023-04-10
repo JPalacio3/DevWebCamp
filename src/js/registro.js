@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
         const formularioRegistro = document.querySelector('#registro');
         formularioRegistro.addEventListener('submit',submitFormulario);
 
+        mostrarEventos();
+
         function seleccionarEvento(e) {
 
             // Aplicamos distrusturing para evitar repetir tanto la e
@@ -27,8 +29,8 @@ import Swal from 'sweetalert2';
                     id: target.dataset.id,
                     titulo: target.parentElement.querySelector('.evento__nombre').textContent.trim()
                 } ]
-
                 mostrarEventos();
+
             } else {
                 Swal.fire({
                     title: 'Límite de eventos alcanzado',
@@ -37,7 +39,6 @@ import Swal from 'sweetalert2';
                     confirmButtonText: 'OK'
                 })
             }
-
         }
 
         function mostrarEventos() {
@@ -49,7 +50,6 @@ import Swal from 'sweetalert2';
                 eventos.forEach(evento => {
                     const eventoDOM = document.createElement('DIV')
                     eventoDOM.classList.add('registro__evento')
-
 
                     const titulo = document.createElement('H3')
                     titulo.classList.add('registro__nombre')
@@ -67,8 +67,12 @@ import Swal from 'sweetalert2';
                     eventoDOM.appendChild(titulo);
                     eventoDOM.appendChild(botonEliminar);
                     resumen.appendChild(eventoDOM);
-
                 })
+            } else {
+                const noRegistro = document.createElement('P');
+                noRegistro.textContent = ' No hay ningún evento seleccionado, añade hasta 5 del lado izquierdo, y tu regalo en la parte inferior';
+                noRegistro.classList.add('registro__texto');
+                resumen.appendChild(noRegistro);
             }
         }
 
@@ -85,7 +89,7 @@ import Swal from 'sweetalert2';
             }
         }
 
-        function submitFormulario(e) {
+        async function submitFormulario(e) {
             e.preventDefault();
 
             // Obtener el regalo
@@ -102,10 +106,33 @@ import Swal from 'sweetalert2';
                 return;
             }
 
+            // Objeto de FormData
+            const datos = new FormData();
+            datos.append('eventos',eventosId)
+            datos.append('regalo_id',regaloId);
 
+
+            const url = '/finalizar-registro/conferencias'
+            const respuesta = await fetch(url,{
+                method: 'POST',
+                body: datos
+            })
+            const resultado = await respuesta.json();
+
+            if (resultado.resultado) {
+                Swal.fire(
+                    'Registro Exitoso',
+                    'Tus conferencias se han almacenado y tu registro fue exitoso, ¡ te esperamos en DevWebCamp !',
+                    'success'
+                ).then(() => location.href = `/boleto?id=${resultado.token}`)
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Hubo un error al almacenar tu registro',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                }).then(() => location.reload());
+            }
         }
-
-
-
     }
 })();

@@ -16,8 +16,6 @@
                 <input type="submit" class="paquetes__submit" value="Inscripción Gratis">
             </form>
 
-
-
         </div>
 
         <div <?php aos_animation(); ?> class="paquete">
@@ -51,6 +49,13 @@
             </ul>
 
             <p class="paquete__precio">$ 49</p>
+
+            <!-- Pago con Paypal -->
+            <div id="smart-button-container">
+                <div style="text-align: center;">
+                    <div id="paypal-button-container-virtual"></div>
+                </div>
+            </div>
         </div>
     </div>
 </main>
@@ -58,11 +63,12 @@
 <!-- //Paypal -->
 <script src="https://www.paypal.com/sdk/js?client-id=AUKDjguebDdRmJEfLTqdAjt8S2_bz55Sko9r_GDi7KI_a6nkHCLKYSkxWwwQ8yuSh_Uctkpah__1Tt1m&enable-funding=venmo&currency=MXN" data-sdk-integration-source="button-factory"></script>
 
+
 <script>
     function initPayPalButton() {
         paypal.Buttons({
             style: {
-                shape: 'pill',
+                shape: 'rect',
                 color: 'blue',
                 layout: 'vertical',
                 label: 'pay',
@@ -109,7 +115,7 @@
                         .then(respuesta => respuesta.json())
                         .then(resultado => {
                             if (resultado.resultado) {
-                                actions.redirect('http://localhost:6969/registro/conferencias');
+                                actions.redirect('http://localhost:6969/finalizar-registro/conferencias');
                             }
                         })
 
@@ -120,6 +126,52 @@
                 console.log(err);
             }
         }).render('#paypal-button-container');
+
+        // Pase virtual
+        paypal.Buttons({
+            style: {
+                shape: 'rect',
+                color: 'blue',
+                layout: 'vertical',
+                label: 'pay',
+            },
+
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        "description": "2",
+                        "amount": {
+                            "currency_code": "USD",
+                            "value": 49
+                        }
+                    }]
+                });
+            },
+
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+
+                    const datos = new FormData();
+                    datos.append('paquete_id', orderData.purchase_units[0].description);
+                    datos.append('pago_id', orderData.purchase_units[0].payments.captures[0].id);
+
+                    fetch('/finalizar-registro/pagar', {
+                            method: 'POST',
+                            body: datos
+                        })
+                        .then(respuesta => respuesta.json())
+                        .then(resultado => {
+                            if (resultado.resultado) {
+                                actions.redirect('http://localhost:6969/finalizar-registro/conferencias');
+                            }
+                        })
+
+                });
+            },
+            onError: function(err) {
+                console.log(err);
+            }
+        }).render('#paypal-button-container-virtual');
     }
     initPayPalButton();
 </script>

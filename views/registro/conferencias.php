@@ -53,7 +53,7 @@
             <div class="registro__regalo">
                 <label for="regalo" class="registro__label">Selecciona un Regalo</label>
                 <select name="" id="regalo" class="registro__select">
-                    <option value="" disabled selected>> -- Selecciona el regalo de tu agrado -- < </option>
+                    <option value="" default disabled>> -- Selecciona el regalo de tu agrado -- < </option>
                             <?php foreach ($regalos as $regalo) { ?>
                     <option value="<?php echo $regalo->id; ?>"> <?php echo $regalo->nombre; ?></option> <?php } ?>
                 </select>
