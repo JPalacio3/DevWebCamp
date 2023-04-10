@@ -43,14 +43,26 @@
 
         </main>
 
-
         <aside class="registro">
             <h2 class="registro__heading">Tu registro</h2>
 
             <!-- enlista los registros que van a ir siendo seleccionados por el ususario -->
             <div id="registro-resumen" class="registro-resumen"></div>
 
+            <!-- Selección de Regalo -->
+            <div class="registro__regalo">
+                <label for="regalo" class="registro__label">Selecciona un Regalo</label>
+                <select name="" id="regalo" class="registro__select">
+                    <option value="" disabled selected>> -- Selecciona el regalo de tu agrado -- < </option>
+                            <?php foreach ($regalos as $regalo) { ?>
+                    <option value="<?php echo $regalo->id; ?>"> <?php echo $regalo->nombre; ?></option> <?php } ?>
+                </select>
+            </div>
 
-
+            <form action="" id="registro" class="formulario">
+                <div class="formulario__campo">
+                    <input type="submit" class="formulario__submit formulario__submit--full " value="Registrarme">
+                </div>
+            </form>
         </aside>
     </div>

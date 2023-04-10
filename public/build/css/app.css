@@ -1338,7 +1338,7 @@ h3 {
   background-color: #0063c1;
   cursor: pointer;
 }
-.formulario__submit--registrar {
+.formulario__submit--registrar, .formulario__submit--full {
   width: 100%;
 }
 .formulario__texto {
@@ -1701,5 +1701,21 @@ h3 {
 }
 .registro__eliminar:hover {
   cursor: pointer;
+}
+.registro__regalo {
+  margin-top: 5rem;
+}
+.registro__label {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.registro__select {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #64748B;
+  padding: 1.5rem;
+  border-radius: 0.8rem;
 }
 /*# sourceMappingURL=app.css.map */

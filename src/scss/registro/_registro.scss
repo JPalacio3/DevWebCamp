@@ -92,4 +92,27 @@
             cursor: pointer;
         }
     }
+
+
+    &__regalo {
+        margin-top: 5rem;
+    }
+
+    &__label {
+        display: block;
+        font-size: 3rem;
+        font-weight: v.$bold;
+        margin-bottom: 2rem;
+    }
+
+    &__select {
+        width: 100%;
+        background-color: v.$blanco;
+        border: 1px solid v.$gris;
+        padding: 1.5rem;
+        border-radius: .8rem;
+    }
+
+
+
 }
