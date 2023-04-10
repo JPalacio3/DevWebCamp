@@ -7,8 +7,8 @@
     </a>
 </div>
 
-<!-- Tabla para mostrar todos los ponentes -->
 
+<!-- Tabla para mostrar todos los ponentes -->
 <div class="dashboard__contenedor">
     <?php if (!empty($ponentes)) { ?>
         <table class="table">
